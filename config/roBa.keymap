@@ -60,12 +60,12 @@
 
         tab {
             bindings = <&kp TAB>;
-            key-positions = <1 2>;
+            key-positions = <0 1>;
         };
 
         shift_tab {
             bindings = <&kp LS(TAB)>;
-            key-positions = <2 3>;
+            key-positions = <1 2>;
         };
 
 //        muhennkann {
