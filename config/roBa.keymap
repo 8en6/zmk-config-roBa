@@ -91,6 +91,25 @@
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
+
+        zoom_in: zoom_in {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &msc SCRL_UP>
+                , <&macro_release &kp LCTRL>;
+        };
+
+        zoom_out: zoom_out {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &msc SCRL_DOWN>
+                , <&macro_release &kp LCTRL>;
+        };
+
     };
 
     behaviors {
@@ -143,6 +162,13 @@
             tapping-term-ms = <200>; // 通常の長押し（Hold）判定時間
             quick-tap-ms = <200>;    // ★ここがダブルタップリピートの受付時間です
             bindings = <&mo>, <&kp>; // ※もしMod-Tapとして使う場合は <&kp>, <&kp> にしてください
+        };
+
+            rot_zoom: sensor_rotate_zoom {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&zoom_in>, <&zoom_out>;
+            tap-ms = <20>;
         };
 
     };
@@ -205,7 +231,7 @@
             bindings = <
 &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4                          &trans  &trans  &trans  &trans  &trans
 &trans          &trans        &trans        &trans          &trans          &trans        &trans  &trans  &trans  &trans  &trans  &trans
-&bt BT_CLR_ALL  &bt BT_CLR    &out OUT_TOG  &studio_unlock  &ind_bat        &ind_con      &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR_ALL  &bt BT_CLR    &trans        &trans          &trans          &trans        &trans  &trans  &trans  &trans  &trans  &trans
 &kp LCTRL       &kp LWIN      &kp LALT      &trans          &trans          &trans        &trans  &trans                          &trans
             >;
         };
