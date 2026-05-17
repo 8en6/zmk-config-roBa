@@ -130,8 +130,6 @@
 &mt_tap LSHFT Z   &kp X         &kp C         &kp V                        &kp B        &kp JP_LBRACKET                &kp JP_RBRACKET    &kp N        &kp M  &kp COMMA         &kp DOT           &mt_tap LSHFT SLASH
 &kp LCTRL         &kp LWIN      &kp LEFT_ALT  &lt NAGINATA INT5  &lt 4 SPACE  &lt 3 INT4                               &lt_bspc 6 BSPC  &lt 2 RET                                                 &lt 5 ESC
             >;
-
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
 
         FUNCTION {
@@ -162,8 +160,6 @@
 &none         &none         &kp JP_COLON  &none           &kp LS(N1)       &kp LS(JP_LBRACKET)   &kp LS(JP_RBRACKET)   &kp LS(N6)   &kp MINUS    &kp LS(COMMA)    &kp LS(DOT) &kp LS(FSLH)
 &kp LCTRL     &kp LWIN      &kp LALT      &trans          &trans           &trans                &trans      &kp LC(ENTER)                                                    &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
         MOUSE {
