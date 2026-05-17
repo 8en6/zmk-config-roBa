@@ -44,7 +44,6 @@
 #define MOD      6
 #define SCROLL   3
 
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 &trackball_listener {
     input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_X_INVERT)
