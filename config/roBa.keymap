@@ -202,7 +202,7 @@
             sensor-bindings = <&rot_zoom>;
             bindings = <
 &kp N1       &kp N2      &kp N3           &kp N4       &kp N5                                  &none         &kp LS(UP)       &kp UP            &none          &kp LALT
-&kp N6       &kp N7      &kp N8           &kp N9       &kp N0   &none                &none     &kp HOME      &kp LEFT         &kp DOWN          &kp RIGHT      &kp LSHFT
+&kp N6       &kp N7      &kp N8           &kp N9       &kp N0   &kp LG(LS(C))        &none     &kp HOME      &kp LEFT         &kp DOWN          &kp RIGHT      &kp LSHFT
 &kp LS(SEMI) &kp MINUS   &kp LS(JP_COLON) &kp FSLH     &kp DOT  &kp LG(LS(C))        &none     &kp END       &kp LS(LEFT)     &kp LS(DOWN)      &kp LS(RIGHT)  &none
 &kp LCTRL    &kp LWIN    &kp LALT         &kp TAB      &kp RET  &kp BSPC                       &trans        &kp LA(ENTER)                                     &none
             >;
@@ -212,39 +212,45 @@
             display-name = "Lower";
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                       &trans  &trans  &trans  &trans  &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans                  &trans          &trans                   &trans   &trans      &trans  &trans                          &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
-        };
-
-        MOUSE {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&kp LS(N7)    &kp LS(N2)    &kp LS(MINUS) &none           &kp LS(SEMI)                                                 &kp JP_YEN   &kp LS(0x87) &kp LS(N8)       &kp LS(N9)  &kp LS(N5)
+&kp JP_AT     &kp SEMI      &kp LS(N4)    &kp JP_LBRACKET &kp JP_RBRACKET  &kp LG(LS(S))         &kp LS(JP_CARET)      &kp LS(N3)   &mkp LCLK    &kp LS(JP_COLON) &mkp RCLK   &kp LS(SEMI)
+&none         &none         &kp JP_COLON  &none           &kp LS(N1)       &kp LS(JP_LBRACKET)   &kp LS(JP_RBRACKET)   &kp LS(N6)   &kp MINUS    &kp LS(COMMA)    &kp LS(DOT) &kp LS(FSLH)
+&kp LCTRL     &kp LWIN      &kp LALT      &trans          &trans           &trans                &trans      &kp LC(ENTER)                                                    &trans
             >;
         };
 
-        SCROLL {
+        raise_layer {
+            display-name = "Raise";
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&none      &none          &kp LC(UP)     &kp LG(UP)     &none                                  &trans     &trans     &trans     &trans        &trans
+&kp LALT   &kp LC(LEFT)   &kp LC(DOWN)   &kp LC(RIGHT)  &none    &kp LG(LC(T))      &kp LC(X)  &kp LC(C)  &mkp LCLK  &mkp RCLK   &mkp RCLK    &kp LALT
+&kp LSHFT  &kp LG(LEFT)   &kp LG(DOWN)   &kp LG(RIGHT)  &none    &kp LG(LC(T))      &kp LG(V)  &kp LC(V)  &kp LC(Z)  &kp LC(Y)   &none        &kp LSHFT
+&kp LCTRL  &kp LWIN       &kp LALT       &trans         &trans   &trans             &kp DEL    &kp LS(ENTER)                                  &trans
             >;
         };
 
-        layer_6 {
+        adjust_layer {
+            display-name = "Adjust";
+            // 時計回り: 拡大 (Ctrl + テンキーの+)
+            // 反時計回り: 縮小 (Ctrl + テンキーの-)
+            sensor-bindings = <&inc_dec_kp LC(KP_PLUS) LC(KP_MINUS)>;            
             bindings = <
-&trans  &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &trans
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &bt BT_CLR_ALL
+&bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4                          &trans  &trans  &trans  &trans  &trans
+&trans          &trans        &trans        &trans          &trans          &trans        &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR_ALL  &bt BT_CLR    &out OUT_TOG  &studio_unlock  &ind_bat        &ind_con      &trans  &trans  &trans  &trans  &trans  &trans
+&kp LCTRL       &kp LWIN      &kp LALT      &trans          &trans          &trans        &trans  &tran                           &trans
+            >;
+        };
+
+        mod_layer {
+            display-name = "Mod";
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;            
+            bindings = <
+&kp F1     &kp F2    &kp F3       &kp F4    &kp F5                            &trans   &trans  &trans  &trans  &trans
+&kp F6     &kp F7    &kp F8       &kp F9    &kp F10  &trans      &trans       &trans   &trans  &trans  &trans  &trans
+&kp F11    &kp F12   &trans       &trans    &trans   &trans      &bootloader  &trans   &trans  &trans  &trans  &trans
+&kp LCTRL  &kp LWIN  &kp LALT     &kp TAB   &kp RET  &kp BSPC    &trans       &trans                           &trans
             >;
         };
     };
