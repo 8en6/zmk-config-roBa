@@ -123,11 +123,10 @@
         };
 
         // スクロール用のbehaviorの設定
-        scroll_down_up: behavior_sensor_rotate_mouse_wheel_down_up {
+        scroll_down_up: scroll_down_up {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-            tap-ms = <20>; // スクロールのタップ時間
         };
 
         // 高速タイピング用のMod-Tap設定（Home Row Mods用）
@@ -164,11 +163,10 @@
             bindings = <&mo>, <&kp>; // ※もしMod-Tapとして使う場合は <&kp>, <&kp> にしてください
         };
 
-            rot_zoom: sensor_rotate_zoom {
+            rot_zoom: rot_zoom {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&zoom_in>, <&zoom_out>;
-            tap-ms = <20>;
         };
 
     };
