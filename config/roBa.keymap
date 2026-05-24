@@ -95,6 +95,8 @@
         zoom_in: zoom_in {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <15>; // 連続入力時の安定化
+            tap-ms = <15>;
             bindings
                 = <&macro_press &kp LCTRL>
                 , <&macro_tap &msc SCRL_UP>
@@ -104,6 +106,8 @@
         zoom_out: zoom_out {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <15>;
+            tap-ms = <15>;
             bindings
                 = <&macro_press &kp LCTRL>
                 , <&macro_tap &msc SCRL_DOWN>
@@ -113,6 +117,12 @@
     };
 
     behaviors {
+        inc_dec_msc: behavior_sensor_rotate_mouse_wheel {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+        };
+
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
@@ -163,10 +173,11 @@
             bindings = <&mo>, <&kp>; // ※もしMod-Tapとして使う場合は <&kp>, <&kp> にしてください
         };
 
-            rot_zoom: rot_zoom {
+        rot_zoom: rot_zoom {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&zoom_in>, <&zoom_out>;
+            // ★右回りと左回りの順番を逆にすることで方向を反転
+            bindings = <&zoom_out>, <&zoom_in>; 
         };
 
     };
@@ -175,7 +186,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            sensor-bindings = <&scroll_down_up>;
+            sensor-bindings = <&inc_dec_msc SCRL_DOWN SCRL_UP>;
             bindings = <
 &lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                          &kp Y        &kp U  &kp I             &kp O             &kp P
 &mt_tap LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K      &lt_slow 4 L      &mt_tap LALT MINUS
