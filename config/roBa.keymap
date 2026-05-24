@@ -186,7 +186,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            sensor-bindings = <&inc_dec_msc SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
             bindings = <
 &lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                          &kp Y        &kp U  &kp I             &kp O             &kp P
 &mt_tap LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K      &lt_slow 4 L      &mt_tap LALT MINUS
