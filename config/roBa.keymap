@@ -188,7 +188,7 @@
         default_layer {
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
             bindings = <
-&lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                          &kp Y        &kp U  &kp I             &kp O             &kp P
+&lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                     &kp Y        &kp U  &kp I             &kp O             &kp P
 &mt_tap LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K      &lt_slow 4 L      &mt_tap LALT MINUS
 &mt_tap LSHFT Z   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &kp COMMA         &kp DOT           &mt_tap LSHFT SLASH
 &kp LCTRL         &kp LWIN      &kp LEFT_ALT  &lt 1 INT5  &lt 4 SPACE  &lt 3 INT4                &lt_bspc 6 BSPC  &lt 2 RET                                                 &lt 5 ESC
@@ -198,9 +198,9 @@
         FUNCTION {
             sensor-bindings = <&rot_zoom>;
             bindings = <
-&none      &none                &kp LC(LS(UP))    &kp PG_UP           &none                              &none           &kp LS(UP)       &kp UP            &none          &kp LALT
-&kp LALT   &kp LC(LS(LEFT))     &kp LC(LS(DOWN))  &kp LC(LS(RIGHT))   &kp HOME  &kp LG(LS(C))   &none    &kp HOME        &kp LEFT         &kp DOWN          &kp RIGHT      &kp LSHFT
-&kp LSHFT  &kp LA(PG_UP)        &kp PG_DN         &kp LA(PG_DN)       &kp END   &kp LG(LS(C))   &none    &kp END         &kp LS(LEFT)     &kp LS(DOWN)      &kp LS(RIGHT)  &none
+&none      &none                &kp LC(LS(UP))    &kp PG_UP           &none                              &none           &kp LS(UP)       &kp UP            &none          &none
+&kp LALT   &kp LC(LS(LEFT))     &kp LC(LS(DOWN))  &kp LC(LS(RIGHT))   &kp HOME  &kp LG(LS(C))   &none    &kp HOME        &kp LEFT         &kp DOWN          &kp RIGHT      &kp LALT
+&kp LSHFT  &kp LA(PG_UP)        &kp PG_DN         &kp LA(PG_DN)       &kp END   &kp LG(LS(C))   &none    &kp END         &kp LS(LEFT)     &kp LS(DOWN)      &kp LS(RIGHT)  &kp LSHFT
 &kp LCTRL  &kp LWIN             &kp LALT          &trans              &trans    &trans          &trans   &kp LA(ENTER)                                                     &none
             >;
         };
@@ -208,9 +208,9 @@
         NUM {
             sensor-bindings = <&rot_zoom>;
             bindings = <
-&kp N1       &kp N2      &kp N3           &kp N4       &kp N5                                  &none         &kp LS(UP)       &kp UP            &none          &kp LALT
-&kp N6       &kp N7      &kp N8           &kp N9       &kp N0   &kp LG(LS(C))        &none     &kp HOME      &kp LEFT         &kp DOWN          &kp RIGHT      &kp LSHFT
-&kp LS(SEMI) &kp MINUS   &kp LS(JP_COLON) &kp FSLH     &kp DOT  &kp LS(MINUS)        &none     &kp END       &kp LS(LEFT)     &kp LS(DOWN)      &kp LS(RIGHT)  &none
+&kp N1       &kp N2      &kp N3           &kp N4       &kp N5                                  &none         &kp LS(UP)       &kp UP            &none          &none
+&kp N6       &kp N7      &kp N8           &kp N9       &kp N0   &kp LG(LS(C))        &none     &kp HOME      &kp LEFT         &kp DOWN          &kp RIGHT      &kp LALT
+&kp LS(SEMI) &kp MINUS   &kp LS(JP_COLON) &kp FSLH     &kp DOT  &kp LS(MINUS)        &none     &kp END       &kp LS(LEFT)     &kp LS(DOWN)      &kp LS(RIGHT)  &kp LSHFT
 &kp LCTRL    &kp LWIN    &kp LALT         &kp TAB      &kp RET  &kp BSPC                       &trans        &kp LA(ENTER)                                     &none
             >;
         };
@@ -219,8 +219,8 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 &kp LS(N7)    &kp LS(N2)    &kp JP_YEN    &none           &kp LS(SEMI)                                                 &kp JP_YEN   &kp LS(0x87) &kp LS(N8)       &kp LS(N9)  &kp LS(N5)
-&kp JP_AT     &kp SEMI      &kp LS(N4)    &kp JP_LBRACKET &kp JP_RBRACKET  &kp LG(LS(S))         &kp LS(JP_CARET)      &kp LS(N3)   &mkp LCLK    &kp LS(JP_COLON) &mkp RCLK   &kp LS(SEMI)
-&none         &none         &kp JP_COLON  &none           &kp LS(N1)       &kp LS(JP_LBRACKET)   &kp LS(JP_RBRACKET)   &kp LS(N6)   &kp MINUS    &kp LS(COMMA)    &kp LS(DOT) &kp LS(FSLH)
+&kp JP_AT     &kp SEMI      &kp LS(N4)    &kp JP_LBRACKET &kp JP_RBRACKET  &kp LG(LS(S))         &kp LS(JP_CARET)      &kp LS(N3)   &mkp LCLK    &kp LS(JP_COLON) &mkp RCLK   &kp LS(MINUS)
+&kp LSHFT     &none         &kp JP_COLON  &none           &kp LS(N1)       &kp LS(JP_LBRACKET)   &kp LS(JP_RBRACKET)   &kp LS(N6)   &kp MINUS    &kp LS(COMMA)    &kp LS(DOT) &kp LS(FSLH)
 &kp LCTRL     &kp LWIN      &kp LALT      &trans          &trans           &trans                &trans      &kp LC(ENTER)                                                    &trans
             >;
         };
@@ -249,8 +249,8 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;            
             bindings = <
 &kp F1     &kp F2    &kp F3       &kp F4    &kp F5                            &trans   &trans  &trans  &trans  &trans
-&kp F6     &kp F7    &kp F8       &kp F9    &kp F10  &trans      &trans       &trans   &trans  &trans  &trans  &trans
-&kp F11    &kp F12   &trans       &trans    &trans   &trans      &bootloader  &trans   &trans  &trans  &trans  &trans
+&kp F6     &kp F7    &kp F8       &kp F9    &kp F10  &trans      &trans       &trans   &trans  &trans  &trans  &kp LALT
+&kp F11    &kp F12   &trans       &trans    &trans   &trans      &bootloader  &trans   &trans  &trans  &trans  &kp LSHFT
 &kp LCTRL  &kp LWIN  &kp LALT     &kp TAB   &kp RET  &kp BSPC    &trans       &trans                           &trans
             >;
         };
