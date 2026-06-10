@@ -114,6 +114,17 @@
                 , <&macro_release &kp LCTRL>;
         };
 
+        macro_parens: macro_parens {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <20>; // キー入力間の待機時間
+            tap-ms = <20>;  // キーを押している時間
+            bindings
+                = <&kp LS(N8)>    // 「(」を入力
+                , <&kp LS(N9)>    // 「)」を入力
+                , <&kp LEFT>;  // 左矢印「←」を入力してカーソルを戻す
+        };
+
     };
 
     behaviors {
@@ -208,10 +219,10 @@
         NUM {
             sensor-bindings = <&rot_zoom>;
             bindings = <
-&kp N1       &kp N2      &kp N3           &kp N4       &kp N5                                  &none         &kp LS(UP)       &kp UP            &none          &none
-&kp N6       &kp N7      &kp N8           &kp N9       &kp N0   &kp LG(LS(C))        &none     &kp HOME      &kp LEFT         &kp DOWN          &kp RIGHT      &kp LALT
-&kp LS(SEMI) &kp MINUS   &kp LS(JP_COLON) &kp FSLH     &kp DOT  &kp LS(MINUS)        &none     &kp END       &kp LS(LEFT)     &kp LS(DOWN)      &kp LS(RIGHT)  &kp LSHFT
-&kp LCTRL    &kp LWIN    &kp LALT         &kp TAB      &kp RET  &kp BSPC                       &trans        &kp LA(ENTER)                                     &none
+&kp N1       &kp N2      &kp N3           &kp N4        &kp N5                                  &none         &kp LS(UP)       &kp UP            &none          &none
+&kp N6       &kp N7      &kp N8           &kp N9        &kp N0   &kp LG(LS(C))        &none     &kp HOME      &kp LEFT         &kp DOWN          &kp RIGHT      &kp LALT
+&kp LS(SEMI) &kp MINUS   &kp LS(JP_COLON) &kp FSLH      &kp DOT  &kp LS(MINUS)        &none     &kp END       &kp LS(LEFT)     &kp LS(DOWN)      &kp LS(RIGHT)  &kp LSHFT
+&kp LCTRL    &kp LWIN    &kp LALT         &macro_parens &kp F2   &kp F10                        &trans        &kp LA(ENTER)                                     &none
             >;
         };
 
