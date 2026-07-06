@@ -125,25 +125,6 @@
                 , <&kp LEFT>;  // 左矢印「←」を入力してカーソルを戻す
         };
 
-        mclk_macro: mclk_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings = <&macro_tap &mkp MB3>;
-        };
-
-        ctrl_mclk: ctrl_mclk {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &mkp MB3>
-                , <&macro_release &kp LCTRL>;
-        };
-
     };
 
     behaviors {
@@ -210,6 +191,35 @@
             bindings = <&zoom_out>, <&zoom_in>; 
         };
 
+        // ① カンマ用：ホールドで「ミドルクリック(MB3)」、タップで「COMMA」
+        mt_mb3: mt_mb3 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            bindings = <&mkp>, <&kp>; // ホールドにマウスキー、タップに通常キーを指定
+        };
+
+        // ② ドット用：ホールドで「Ctrl + ミドルクリック(MB3)」、タップで「DOT」
+        mt_ctrl_mb3: mt_ctrl_mb3 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            bindings = <&kp_ctrl_mb3>, <&kp>; // ホールドに独自のCtrl+MB3、タップに通常キーを指定
+        };
+
+        // ②の内部処理用：Ctrlを押しながらMB3（ミドルクリック）を送信するMod-Morph
+        kp_ctrl_mb3: kp_ctrl_mb3 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mkp MB3>;
+            mods = <(MOD_LCTL)>;
+            keep-mods = <(MOD_LCTL)>;
+        };
+
     };
 
     keymap {
@@ -220,7 +230,7 @@
             bindings = <
 &lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                     &kp Y        &kp U  &kp I               &kp O               &kp P
 &mt_tap LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K        &lt_slow 4 L        &mt_tap LALT MINUS
-&mt_tap LSHFT Z   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &mt_tap &mclk_macro COMMA   &mt_tap &ctrl_mclk DOT &mt_tap LSHFT SLASH
+&mt_tap LSHFT Z   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &mt_mb3 MB3 COMMA    &mt_ctrl_mb3 0 DOT &mt_tap LSHFT SLASH
 &kp LCTRL         &kp LWIN      &kp LEFT_ALT  &lt 1 INT5  &lt 4 SPACE  &lt 3 INT4                &lt_bspc 6 BSPC  &lt 2 RET                                                     &lt 5 ESC
             >;
         };
