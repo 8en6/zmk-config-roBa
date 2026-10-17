@@ -33,13 +33,13 @@
         // 初期状態では標準の慣性設定を使用
 
         // 慣性を発動しやすくする
-        start = <20>;
-        move = <30>;
-        min-events = <3>;
+        start = <30>;
+        move = <60>;
+        min-events = <7>;
 
         // 慣性を長く残す
-        decay-fast = <995>;
-        friction = <0>;
+        decay-fast = <990>;
+        friction = <35>;
     };
 };
 
