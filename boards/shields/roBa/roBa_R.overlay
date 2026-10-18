@@ -34,8 +34,8 @@
 
         // 慣性の発動設定
         start = <30>;
-        move = <50>;
-        min-events = <7>;
+        move = <10>;
+        min-events = <3>;
 
         // 慣性の長さ設定
         decay-fast = <990>;
