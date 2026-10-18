@@ -15,7 +15,7 @@ manifest:
       remote: kumamuk-git
       revision: main
     - name: zmk-input-processor-scroll-inertia
-      remote: mjmjm0101
+      remote: 8en6
       revision: main
   self:
     path: config
