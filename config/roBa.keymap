@@ -149,6 +149,27 @@
     };
 
     behaviors {
+        // Z: single tap = z, double tap = Z, hold = LSHIFT
+        // Nested hold-tap follows moNa2's existing zfold configuration.
+        zfold: zfold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ZFOLD";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            tapping-term-ms = <300>;
+            flavor = "hold-preferred";
+            quick-tap-ms = <150>;
+            hold-while-undecided;
+        };
+
+        zfoldZ: zfoldZ {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ZFOLDZ";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&zfold LEFT_SHIFT Z>, <&kp LS(Z)>;
+        };
+
         inc_dec_msc: behavior_sensor_rotate_mouse_wheel {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
@@ -244,7 +265,7 @@
             bindings = <
 &lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                     &kp Y        &kp U  &kp I               &lt_slow 4 O        &kp P
 &mt_tap LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K        &lt_slow 4 L        &mt_tap LALT MINUS
-&mt_tap LSHFT Z   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &p_mt_mb3 0 COMMA   &p_mt_ctrl_mb3 0 DOT &mt_tap LSHFT SLASH
+&zfoldZ   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &p_mt_mb3 0 COMMA   &p_mt_ctrl_mb3 0 DOT &mt_tap LSHFT SLASH
 &kp LCTRL         &kp LWIN      &kp LEFT_ALT  &lt 1 INT5  &lt 4 SPACE  &lt 3 INT4                &lt_bspc 6 BSPC  &lt 2 RET                                                     &lt 5 ESC
             >;
         };
