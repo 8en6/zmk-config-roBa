@@ -34,8 +34,8 @@
         move = <10>;
 
         // 横スクロール：発動しにくい
-        start-x = <40>;
-        move-x = <20>;
+        start-x = <25>;
+        move-x = <15>;
 
         // 縦横共通
         min-events = <3>;
