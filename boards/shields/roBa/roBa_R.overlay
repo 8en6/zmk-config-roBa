@@ -21,28 +21,27 @@
         compatible = "zmk,input-processor-scroll-inertia";
         #input-processor-cells = <0>;
 
-        // 縦横両方のスクロールを有効化
+        // 縦横ともにスクロール可能
         axis = <0>;
-
-        // 現在使用中のスクロールレイヤー
         layer = <3>;
 
-        // 下のzip_scroll_scalerと一致させる
         scale = <1>;
         scale-div = <32>;
 
-        // 初期状態では標準の慣性設定を使用
-
-        // 慣性の発動設定
-        start = <25>;
+        // 縦スクロール：発動しやすい
+        start = <20>;
         move = <10>;
+
+        // 横スクロール：発動しにくい
+        start-x = <60>;
+        move-x = <30>;
+
+        // 縦横共通
         min-events = <3>;
 
-        // 慣性の長さ設定
-        decay-fast = <985>;
+        // 慣性の減速設定
+        decay-fast = <990>;
         friction = <35>;
-
-        // 低速になったら早めに停止
         stop = <2>;
     };
 };
