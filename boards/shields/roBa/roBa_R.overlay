@@ -34,15 +34,15 @@
         move = <10>;
 
         // 横スクロール：発動しにくい
-        start-x = <60>;
-        move-x = <30>;
+        start-x = <40>;
+        move-x = <20>;
 
         // 縦横共通
         min-events = <3>;
 
         // 慣性の減速設定
         decay-fast = <990>;
-        friction = <35>;
+        friction = <25>;
         stop = <2>;
     };
 };
