@@ -1,3 +1,4 @@
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
 #include <scroll-snap.dtsi>
 #include "roBa.dtsi"
@@ -46,6 +47,18 @@
     };
 };
 
+/ {
+    horizontal_scroll_scaler: horizontal_scroll_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_HWHEEL>;
+
+        track-remainders;
+    };
+};
+
 &zip_scroll_snap {
     // 縦横の成分が1:1を境に方向判定
     x-threshold = <1 1>;
@@ -72,6 +85,10 @@
             &zip_y_scaler (-1) 1
             &zip_xy_to_scroll_mapper
             &zip_scroll_snap
+
+             // 横スクロールだけ50%にする
+            &horizontal_scroll_scaler 1 2
+
             &scroll_inertia_roba
             &zip_scroll_scaler 1 32
         >;
