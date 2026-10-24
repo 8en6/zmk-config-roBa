@@ -1,4 +1,5 @@
 #include <input/processors.dtsi>
+#include <scroll-snap.dtsi>
 #include "roBa.dtsi"
 
 &default_transform {
@@ -44,6 +45,22 @@
         // 低速になったら早めに停止
         stop = <2>;
     };
+};
+
+&zip_scroll_snap {
+    // 縦横の成分が1:1を境に方向判定
+    x-threshold = <1 1>;
+    y-threshold = <1 1>;
+
+    // 方向判定に使うイベント数
+    require-n-samples = <4>;
+
+    // 判定した方向を保持
+    lock-duration-ms = <200>;
+    lock-for-next-n-events = <8>;
+
+    // 入力が途切れたら判定をリセット
+    idle-reset-timeout-ms = <180>;
 };
 
 &trackball_listener {
