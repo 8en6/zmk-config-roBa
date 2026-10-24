@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/kumamuk-git
     - name: 8en6
       url-base: https://github.com/8en6
+    - name: kot149
+      url-base: https://github.com/kot149
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -17,5 +19,8 @@ manifest:
     - name: zmk-input-processor-scroll-inertia
       remote: 8en6
       revision: main
+    - name: zmk-scroll-snap
+      remote: kot149
+      revision: v1
   self:
     path: config
