@@ -191,6 +191,18 @@
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
         };
 
+        // A専用: 単独保持時のAlt確定を200msから320msへ遅らせる。
+        // 他のキーとの同時打鍵では元のtap-preferredを維持する。
+        a_alt_slow: a_alt_slow {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <320>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <125>;
+        };
+
         // 高速タイピング用のMod-Tap設定（Home Row Mods用）
         mt_tap: mod_tap_preferred {
             compatible = "zmk,behavior-hold-tap";
@@ -263,7 +275,7 @@
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
             bindings = <
 &lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                     &kp Y        &kp U  &kp I               &lt_slow 4 O        &kp P
-&mt_tap LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K        &lt_slow 4 L        &mt_tap LALT MINUS
+&a_alt_slow LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K        &lt_slow 4 L        &mt_tap LALT MINUS
 &z_shift LSHFT 0   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &p_mt_mb3 0 COMMA   &p_mt_ctrl_mb3 0 DOT &mt_tap LSHFT SLASH
 &kp LCTRL         &kp LWIN      &kp LEFT_ALT  &lt 1 INT5  &lt 4 SPACE  &lt 3 INT4                &lt_bspc 6 BSPC  &lt 2 RET                                                     &lt 5 ESC
             >;
