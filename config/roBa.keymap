@@ -164,8 +164,9 @@
             label = "Z_SHIFT";
             #binding-cells = <2>;
             bindings = <&kp>, <&z_tapdance>;
-            flavor = "hold-preferred";
+            flavor = "tap-preferred";
             tapping-term-ms = <170>;
+            require-prior-idle-ms = <125>;
             quick-tap-ms = <0>;
         };
 
