@@ -151,23 +151,18 @@
     behaviors {
         // Z: Hold-Tap is outermost so another key press resolves Shift
         // immediately. Tap Dance runs only after a genuine tap release.
-        z_tapdance: z_tapdance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "Z_TAPDANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp Z>, <&kp LS(Z)>;
-        };
-
+        // Prioritize Japanese romaji typing order: emit z on tap release,
+        // without waiting for a double-tap window.
+        // Holding for 170 ms activates Left Shift.
         z_shift: z_shift {
             compatible = "zmk,behavior-hold-tap";
             label = "Z_SHIFT";
             #binding-cells = <2>;
-            bindings = <&kp>, <&z_tapdance>;
+            bindings = <&kp>, <&kp>;
             flavor = "tap-preferred";
             tapping-term-ms = <170>;
-            require-prior-idle-ms = <125>;
             quick-tap-ms = <0>;
+            require-prior-idle-ms = <125>;
         };
 
         inc_dec_msc: behavior_sensor_rotate_mouse_wheel {
@@ -277,7 +272,7 @@
             bindings = <
 &lt_slow 4 Q      &kp W         &kp E         &kp R       &kp T                                                     &kp Y        &kp U  &kp I               &lt_slow 4 O        &kp P
 &a_alt_slow LALT A    &kp S         &kp D         &kp F       &kp G        &kp LG(L)                 &kp JP_CARET       &kp H        &kp J  &lt_slow 3 K        &lt_slow 4 L        &mt_tap LALT MINUS
-&z_shift LSHFT 0   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &p_mt_mb3 0 COMMA   &p_mt_ctrl_mb3 0 DOT &mt_tap LSHFT SLASH
+&z_shift LSHFT Z   &kp X         &kp C         &kp V       &kp B        &kp JP_LBRACKET           &kp JP_RBRACKET    &kp N        &kp M  &p_mt_mb3 0 COMMA   &p_mt_ctrl_mb3 0 DOT &mt_tap LSHFT SLASH
 &kp LCTRL         &kp LWIN      &kp LEFT_ALT  &lt 1 INT5  &lt 4 SPACE  &lt 3 INT4                &lt_bspc 6 BSPC  &lt 2 RET                                                     &lt 5 ESC
             >;
         };
