@@ -30,19 +30,19 @@
         scale-div = <32>;
 
         // 縦スクロール：発動しやすい
-        start = <20>;
-        move = <10>;
+        start = <16>;
+        move = <8>;
 
-        // 横スクロール：発動しにくい
-        start-x = <20>;
-        move-x = <10>;
+        // 横スクロール：縦と同じ慣性開始閾値
+        start-x = <16>;
+        move-x = <8>;
 
         // 縦横共通
         min-events = <3>;
 
         // 慣性の減速設定
         decay-fast = <990>;
-        friction = <25>;
+        friction = <30>;
         stop = <2>;
     };
 };
