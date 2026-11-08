@@ -34,15 +34,15 @@
         move = <8>;
 
         // 横スクロール：縦と同じ慣性開始閾値
-        start-x = <16>;
-        move-x = <8>;
+        start-x = <20>;
+        move-x = <10>;
 
         // 縦横共通
         min-events = <3>;
 
         // 慣性の減速設定
         decay-fast = <990>;
-        friction = <30>;
+        friction = <25>;
         stop = <2>;
     };
 };
