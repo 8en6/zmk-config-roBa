@@ -42,7 +42,7 @@
 
         // 慣性の減速設定
         decay-fast = <990>;
-        friction = <25>;
+        friction = <30>;
         stop = <2>;
     };
 };
